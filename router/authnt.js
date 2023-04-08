@@ -56,41 +56,32 @@ router.post('/register', upload.single('file'), async(req, res) =>{
 
 //Login Page
 router.post('/login', async (req, res) =>{ 
-    
     try {
         let token; 
         const {email, password } = req.body;
-        
         if(!email || !password){
             return res.status(400).json({error : "Please fill The Data" }); 
         }   
-        
         const userEmail = await User.findOne({email:email});
         if(userEmail){
             const isMatch = await bcrypt.compare(password, userEmail.password);
-
             token = await userEmail.generateAuthToken();
-            res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app/");
+            res.header("Access-Control-Allow-Origin", "http://localhost:3000");
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
                 httpOnly: true,
             })
-            
             if(!isMatch){
                res.status(400).json({ err : "Invalid Detailes" });
             } else {
                 res.json({message : "User Login Successfull", token:token});
-            
             }
-
         }else {
             res.status(400).json({ err : "Invalid Detailes" });
         }
-
     } catch (error) {
          console.log(error);
     }
-    
 });
 
 

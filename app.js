@@ -14,8 +14,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({credentials: true, origin: 'https://sumit-auth.netlify.app/'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(require('./router/authnt'));
+
 
 
 app.all('*', (req, res, next) => {
