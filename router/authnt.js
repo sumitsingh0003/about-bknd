@@ -12,7 +12,6 @@ router.get('/', (req, res)=>{
     res.send("Home Page")
 })
 
-
 const storage = multer.diskStorage({   
     destination:(req, file, cb ) =>{
         cb(null, "public/images/");
