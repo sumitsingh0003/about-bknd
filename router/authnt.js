@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 
-
 router.post('/register', upload.single('file'), async(req, res) =>{ 
    
     const {username, email, phone, city, password, cpassword, images } = req.body;
