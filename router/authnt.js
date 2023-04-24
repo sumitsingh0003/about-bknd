@@ -26,6 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 
+
 router.post('/register', upload.single('file'), async(req, res) =>{ 
    
     const {username, email, phone, city, password, cpassword, images } = req.body;
@@ -37,7 +38,7 @@ router.post('/register', upload.single('file'), async(req, res) =>{
     try {
         const userExist = await User.findOne({email:email});
         if(userExist){
-            return res.status(422).json({error : "Email Allready Exist" });
+            return res.status(422).json({error : "Email Allready Exist" }, alert('hello'));
         }else if(password !== cpassword){
             return res.status(422).json({error : "Password Doesn't Same Please Check" }); 
         }else{
