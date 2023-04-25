@@ -70,6 +70,9 @@ router.post('/login', async (req, res) =>{
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
                 httpOnly: true
             })
+            console.log(res.cookie("jwtoken", token), "Save Token in Cookies")
+
+
             if(!isMatch){
                res.status(400).json({ err : "Invalid Detailes" });
             } else {
