@@ -67,13 +67,14 @@ router.post('/login', async (req, res) =>{
             token = await userEmail.generateAuthToken();
             console.log("Middleware Funcktion create Token", token)
             res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
-            const cook = res.cookie("jwtoken", token, {
+            res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
                 httpOnly: true,
             })
-            console.log(res.cookie("jwtoken", token), "Save Token in Cookies")
-            
-            console.log(cook, "Const Cookie Cookies")
+           
+            console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
+
+
             if(!isMatch){
                res.status(400).json({ err : "Invalid Detailes" });
             } else {
@@ -91,15 +92,12 @@ router.post('/login', async (req, res) =>{
 // aboutus ka Page
 router.get('/about', authentications, (req, res) => {
     res.send(req.rootUser);
-    console.log("About Get Dat", req.rootUser)
 });
 
 
 // Get Contact ka Page
 router.get('/getdata', authentications, (req, res) => {
     res.send(req.rootUser);
-    console.log("About Get Dat", req.rootUser)
-
 });
 
 
