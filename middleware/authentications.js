@@ -5,10 +5,10 @@ const User = require('../model/schema');
 const authentications = async (req, res, next) =>{
 
     try {
-        
+        console.log(req)
         //jo bhi hmara token generate hua use token m get kar liya or agar nahi hua to catch m chala jayega
         const token = req.cookies.jwtoken;
-
+        console.log(req.cookies.jwtoken)
         //verifyToken m hamne jo hmara token h use verify kr liya generate ki hui token ki secret key k sath
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
