@@ -65,7 +65,7 @@ router.post('/login', async (req, res) =>{
         if(userEmail){
             const isMatch = await bcrypt.compare(password, userEmail.password);
             token = await userEmail.generateAuthToken();
-            res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+            res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
                 httpOnly: true,
