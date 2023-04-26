@@ -73,7 +73,9 @@ router.post('/login', async (req, res) =>{
                 domain: "https://sumit-auth.netlify.app",
                 path: "/",
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
-                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+                httpOnly: true
             })
             console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
 
