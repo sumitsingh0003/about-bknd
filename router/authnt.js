@@ -69,7 +69,9 @@ router.post('/login', async (req, res) =>{
             console.log("Middleware Funcktion create Token", token)
 
             res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
-            res.set-cookie("jwtoken", token, {
+            res.cookie("jwtoken", token, {
+                domain: "https://sumit-auth.netlify.app",
+                path: "/",
                 expires: new Date(Date.now() + 86400000),  //24Hour k bad apne aap Log Out ho jayega (86400000 Milliseconds, 86400 Second, 1440 Minut, 24 Hours)
                 httpOnly: true,
             })
