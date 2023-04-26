@@ -76,7 +76,7 @@ router.post('/login', async (req, res) =>{
                 sameSite: "none",
                 secure: true,
                 httpOnly: true
-            })
+            }).send("Cookie set!")
             console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
 
 
