@@ -82,7 +82,7 @@ router.post('/login', async (req, res) =>{
             if(!isMatch){
                res.status(400).json({ err : "Invalid Detailes" });
             } else {
-                res.json({message : "User Login Successfull", token:token});
+                res.json({message : "User Login Successfull", token:token, userEmail:userEmail});
             }
         }else {
             res.status(400).json({ err : "Invalid Detailes" });
@@ -100,9 +100,9 @@ router.get('/about', authentications, (req, res) => {
 
 
 // Get Contact ka Page
-router.get('/getdata', authentications, (req, res) => {
-    res.send(req.rootUser);
-});
+// router.get('/getdata', authentications, (req, res) => {
+//     res.send(req.rootUser);
+// });
 
 
 // Send Contact Message Data
