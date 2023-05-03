@@ -67,7 +67,6 @@ router.post('/login', async (req, res) =>{
             token = await userEmail.generateAuthToken();
 
             console.log("Middleware Funcktion create Token", token)
-
             res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
             res.cookie("jwtoken", token, {
                 domain: "https://sumit-auth.netlify.app",
@@ -77,7 +76,7 @@ router.post('/login', async (req, res) =>{
                 secure: true,
                 httpOnly: true
             })
-            console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
+            // console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
 
 
             if(!isMatch){
