@@ -65,6 +65,7 @@ router.post('/login', async (req, res) =>{
         if(userEmail){
             const isMatch = await bcrypt.compare(password, userEmail.password);
             token = await userEmail.generateAuthToken();
+            req.session.jwtoken=token;
 
             res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
             res.cookie("jwtoken", token, {
