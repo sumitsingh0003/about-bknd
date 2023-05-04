@@ -75,6 +75,7 @@ router.post('/login', async (req, res) =>{
                 expires: new Date(Date.now() + 86400000),
                 secure: true,
                 httpOnly: true,
+                sameSite:"none"
             })
             // console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
 
