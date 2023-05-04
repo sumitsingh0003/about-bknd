@@ -70,13 +70,14 @@ router.post('/login', async (req, res) =>{
 
             res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
             res.setHeader('Set-Cookie', cookie.serialize("jwtoken", token, {
-                domain: "https://sumit-auth.netlify.app",
                 httpOnly: true, 
                 maxAge: 60 * 60 * 24,
-                expires: new Date(Date.now() + 86400000),
                 sameSite: 'strict',
                 secure: true,
             }))
+
+            const myCookieValue = cookie.parse(req.headers.cookie || '').myCookie
+            console.log(myCookieValue, "myCookieValue")
 
             console.log(req.session.jwtoken, "req.session.jwtoken")
 

@@ -4,7 +4,6 @@
    const dotenv = require("dotenv");
    const session = require('express-session');
    const cookieParser = require("cookie-parser");
-   const cookie = require('cookies');
    const app = express();
 
    dotenv.config({ path: "./config.env" });
@@ -12,7 +11,6 @@
 
    app.use(express.static("public"));
    app.use(express.json());
-   app.use(cookie());
    app.use(session({
       secret: 'HYMYNAMEISSUMITSINGANDIAMLEARNINGREACTANDMERNDB', // replace with your own secret key
       resave: false,
