@@ -4,6 +4,7 @@ const multer  = require('multer');
 const authentications = require("../middleware/authentications");
 const router = express.Router();
 const fs = require('fs');
+const cookie = require('cookies');
 
 require("../db/connection");
 const User = require('../model/schema');
