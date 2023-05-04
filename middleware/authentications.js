@@ -9,7 +9,7 @@ const authentications = async (req, res, next) =>{
         //jo bhi hmara token generate hua use token m get kar liya or agar nahi hua to catch m chala jayega
         const token = req.cookies.jwtoken;
 
-        console.log(req.cookies, "Authentication req JWtoken")
+        console.log(req, "authentications req ")
         //verifyToken m hamne jo hmara token h use verify kr liya generate ki hui token ki secret key k sath
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 

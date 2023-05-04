@@ -71,13 +71,13 @@ router.post('/login', async (req, res) =>{
             // res.cookie("jwtoken", token, {
             //     domain: "https://sumit-auth.netlify.app",
             //     maxAge: 5000,
-            //     // expires works the same as the maxAge
             //     expires: new Date(Date.now() + 86400000),
             //     secure: true,
             //     httpOnly: true,
-            //     sameSite:"none"
+            //     SameSite:"none"
             // })
-            // console.log(res.cookie("jwtoken", token), "Const Cookie Cookies")
+
+            console.log(req.session.jwtoken, "req.session.jwtoken")
 
 
             if(!isMatch){
@@ -101,9 +101,9 @@ router.get('/about', authentications, (req, res) => {
 
 
 // Get Contact ka Page
-// router.get('/getdata', authentications, (req, res) => {
-//     res.send(req.rootUser);
-// });
+router.get('/getdata', authentications, (req, res) => {
+    res.send(req.rootUser);
+});
 
 
 // Send Contact Message Data
