@@ -41,7 +41,7 @@ router.post('/register', upload.single('file'), async(req, res) =>{
         }else if(password !== cpassword){
             return res.status(422).json({error : "Password Doesn't Same Please Check" }); 
         }else{
-            const url = req.protocol + '://' + req.get('host');
+            const url = 'https://5000.web2rise.in';
             const user = new User({username, email, phone, city, password, cpassword, images:url + '/images/' + req.file.filename,});
 
             await user.save();
