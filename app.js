@@ -2,7 +2,7 @@
    const bodyParser = require("body-parser");
    const cors = require("cors");
    const dotenv = require("dotenv");
-   const session = require('express-session');
+   // const session = require('express-session');
    const cookieParser = require("cookie-parser");
    const app = express();
 
@@ -11,11 +11,11 @@
 
    app.use(express.static("public"));
    app.use(express.json());
-   app.use(session({
-      secret: 'HYMYNAMEISSUMITSINGANDIAMLEARNINGREACTANDMERNDB', // replace with your own secret key
-      resave: false,
-      saveUninitialized: true
-    }));
+   // app.use(session({
+   //    secret: 'HYMYNAMEISSUMITSINGANDIAMLEARNINGREACTANDMERNDB', // replace with your own secret key
+   //    resave: false,
+   //    saveUninitialized: true
+   //  }));
    app.use(express.urlencoded({ extended: true }));
    app.use(cookieParser());
    app.use(bodyParser.json({ limit: "50mb" }));

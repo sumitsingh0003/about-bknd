@@ -66,20 +66,20 @@ router.post('/login', async (req, res) =>{
         if(userEmail){
             const isMatch = await bcrypt.compare(password, userEmail.password);
             token = await userEmail.generateAuthToken();
-            req.session.jwtoken=token;
+            // req.session.jwtoken=token;
 
-            res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
-            res.setHeader('Set-Cookie', cookie.serialize("jwtoken", token, {
+            // res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
+            res.cookie("jwtoken", token, {
                 httpOnly: true, 
                 maxAge: 60 * 60 * 24,
                 sameSite: 'strict',
                 secure: true,
-            }))
+            })
 
-            const myCookieValue = cookie.parse(req.headers.cookie || '').myCookie
-            console.log(myCookieValue, "myCookieValue")
+            // const myCookieValue = cookie.parse(req.headers.cookie || '').myCookie
+            // console.log(myCookieValue, "myCookieValue")
 
-            console.log(req.session.jwtoken, "req.session.jwtoken")
+            // console.log(req.session.jwtoken, "req.session.jwtoken")
 
 
             if(!isMatch){
