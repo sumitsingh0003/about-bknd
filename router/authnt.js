@@ -71,7 +71,8 @@ router.post('/login', async (req, res) =>{
             // res.header("Access-Control-Allow-Origin", "https://sumit-auth.netlify.app");
             res.cookie("jwtoken", token, {
                 httpOnly: true, 
-                maxAge: 60 * 60 * 24,
+                // maxAge: 60 * 60 * 24,
+                expires: new Date(Date.now()+86400000),
                 secure: true,
                 sameSite:"None"
             })
