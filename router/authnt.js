@@ -73,6 +73,7 @@ router.post('/login', async (req, res) =>{
                 httpOnly: true, 
                 maxAge: 60 * 60 * 24,
                 secure: true,
+                sameSite:"None"
             })
 
             // const myCookieValue = cookie.parse(req.headers.cookie || '').myCookie
